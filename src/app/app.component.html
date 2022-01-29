@@ -1,0 +1,34 @@
+<mat-toolbar color="primary" class="text-center">
+  Card Memory Game
+</mat-toolbar>
+<div class="p-16">
+  <h1 class="table-center">Scores</h1>
+  <div class="table-center">
+    <table >
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Time taken</th>
+        <th>Date</th>
+      </tr>
+        </thead>
+
+      <tbody *ngFor="let score of hscore">
+      <tr>
+        <td>{{score.name}}</td>
+        <td>{{score.totalTime}}</td>
+        <td>{{score.time | date: 'MM-dd-yyyy'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <p class="text-center">Tap on a card to flip it. You can only flip a maximum of two cards at a time. A match will
+    remove
+    those cards!</p>
+  <div class="grid p-16">
+    <app-game-card *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)">
+    </app-game-card>
+  </div>
+  <h3 class="text-center"><b>Time taken: </b><span>{{hr}}</span> hr: <span>{{min}}</span> min: <span>{{sec}}</span> sec</h3>
